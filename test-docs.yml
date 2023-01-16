@@ -4,7 +4,6 @@ on:
     paths:
       - "docs/**"
 jobs:
-  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,8 +19,6 @@ jobs:
         with:
           version: 7.5.0
           run_install: false
-
-      - name: Get pnpm store directory
         id: pnpm-cache
         shell: bash
         run: |
@@ -40,6 +37,5 @@ jobs:
 
       - uses: mansagroup/nrwl-nx-action@v3
         with:
-          targets: build
           projects: "@novu/docs"
           nxCloud: true
